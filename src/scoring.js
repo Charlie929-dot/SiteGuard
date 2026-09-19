@@ -7,11 +7,6 @@
 //   流量热度 15%（Phase 2 接入）| 注册商信誉 10%
 // ============================================================
 
-//映射分数到100分制
-const function mapping(score) {
-  return (score/10)*100;
-}
-
 // 高危注册商列表（已知被大量用于钓鱼/垃圾邮件的注册商）
 const HIGH_RISK_REGISTRARS = [
   'namesilo', 'namecheap', 'gmo', 'onamae', 'porkbun',
@@ -31,8 +26,8 @@ const TRUSTED_REGISTRARS = [
  */
 function scoreOfficialDomain(officialResult) {
   if (officialResult.status === 'official') return { score: 50, label: '官方站点' };
-  if (officialResult.status === 'suspicious') return { score: -30, label: '疑似仿冒' };
-  return { score: 10, label: '非官方/未知' };
+  if (officialResult.status === 'suspicious') return { score: -10, label: '疑似仿冒' };
+  return { score: 5, label: '非官方/未知' };
 }
 
 /**
@@ -65,7 +60,7 @@ function scoreIcp(icpResult, officialResult) {
  */
 function scoreAge(ageResult) {
   if (ageResult.ageDays === null) return { score: 0, label: '注册时间未知' };
-  if (ageResult.ageDays < 90) return { score: -30, label: '新注册域名（<90天）' };
+  if (ageResult.ageDays < 90) return { score: -10, label: '新注册域名（<90天）' };
   if (ageResult.ageDays < 365) return { score: 3, label: '注册 3 个月 - 1 年' };
   if (ageResult.ageDays < 365 * 3) return { score: 5, label: '注册 1-3 年' };
   return { score: 10, label: '注册 >3 年' };

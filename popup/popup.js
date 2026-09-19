@@ -4,7 +4,7 @@
 // ============================================================
 
 //映射分数到100分制
-const function mapping(score) {
+function mapping(score) {
   return (score/10)*100;
 }
 
@@ -237,14 +237,14 @@ function renderFactors(factors) {
     name.textContent = f.name;
 
     const score = document.createElement('span');
-    // const scoreClass = f.score > 0 ? 'positive' : (f.score < 0 ? 'negative' : 'neutral');
-    // score.className = `factor-score ${scoreClass}`;
-    score.textContent = `${mapping(f.score)}%`;
+    const scoreClass = f.score > 0 ? 'positive' : (f.score < 0 ? 'negative' : 'neutral');
+    score.className = `factor-score ${scoreClass}`;
+    score.textContent = `${Math.max(0, Math.min(100, mapping(f.score)))}%`;
 
     row.appendChild(name);
     row.appendChild(score);
 
-    // 进度条（映射 -30~30 到 0-100%）
+    // 进度条（映射 0-10 到 0-100%）
     const bar = document.createElement('div');
     bar.className = 'factor-bar';
     const fill = document.createElement('div');
