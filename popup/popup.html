@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SiteGuard</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <!-- 顶部：域名 + 评分 -->
+    <div class="header" id="header">
+      <div class="domain-row">
+        <span class="domain" id="domain">加载中...</span>
+      </div>
+      <div class="score-row" id="scoreRow">
+        <span class="score-icon" id="scoreIcon">⚪</span>
+        <span class="score-value" id="scoreValue">--</span>
+        <span class="score-total">/100</span>
+        <span class="score-level" id="scoreLevel">分析中</span>
+      </div>
+    </div>
+
+    <!-- 评分明细 -->
+    <div class="section" id="factorSection" style="display:none;">
+      <div class="section-title">评分明细</div>
+      <div class="factor-list" id="factorList"></div>
+    </div>
+
+    <!-- 风险提示 -->
+    <div class="warning" id="warningBox" style="display:none;"></div>
+
+
+    <!-- 域名基础信息 -->
+    <div class="section" id="whoisSection">
+      <div class="section-title">域名基础信息</div>
+      <div class="info-list" id="whoisList">
+        <div class="info-item"><span class="label">注册时间</span><span class="value" id="regTime">-</span></div>
+        <div class="info-item"><span class="label">域名年龄</span><span class="value" id="regAge">-</span></div>
+        <div class="info-item"><span class="label">到期时间</span><span class="value" id="expTime">-</span></div>
+        <div class="info-item"><span class="label">注册商</span><span class="value" id="registrar">-</span></div>
+        <div class="info-item"><span class="label">隐私保护</span><span class="value" id="privacy">-</span></div>
+      </div>
+    </div>
+
+    <!-- 官方域名比对 -->
+    <div class="section" id="officialSection">
+      <div class="section-title">官方域名比对</div>
+      <div class="info-list" id="officialList">
+        <div class="info-item"><span class="label">比对结果</span><span class="value" id="officialStatus">-</span></div>
+        <div class="info-item" id="officialNameRow" style="display:none;"><span class="label">机构名称</span><span class="value" id="officialName">-</span></div>
+        <div class="info-item" id="similarRow" style="display:none;"><span class="label">疑似仿冒</span><span class="value" id="similarDomain">-</span></div>
+      </div>
+    </div>
+
+    <!-- ICP 备案 -->
+    <div class="section" id="icpSection">
+      <div class="section-title">ICP 备案</div>
+      <div class="info-list" id="icpList">
+        <div class="info-item"><span class="label">备案状态</span><span class="value" id="icpStatus">-</span></div>
+        <div class="info-item" id="icpNumberRow" style="display:none;"><span class="label">备案号</span><span class="value" id="icpNumber">-</span></div>
+        <div class="info-item" id="icpSubjectRow" style="display:none;"><span class="label">备案主体</span><span class="value" id="icpSubject">-</span></div>
+      </div>
+    </div>
+
+
+
+    <!-- 底部 -->
+    <div class="footer">
+      <span>SiteGuard · 仅供参考，不构成安全保证</span>
+      <button id="clearCacheBtn" class="clear-cache-btn" type="button">清除缓存</button>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

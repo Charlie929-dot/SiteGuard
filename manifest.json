@@ -1,0 +1,43 @@
+{
+  "manifest_version": 2,
+  "name": "SiteGuard - 域名安全标识",
+  "version": "0.1.0",
+  "description": "在地址栏旁标记域名安全信息，帮助你快速识别钓鱼网站、仿冒站点和高风险域名。",
+  "permissions": [
+    "tabs",
+    "activeTab",
+    "storage",
+    "https://apis.tianapi.com/*",
+    "https://rdap.org/*",
+    "https://rdap.verisign.com/*",
+    "https://rdap.cnnic.cn/*",
+    "https://api.vvhan.com/*"
+  ],
+  "background": {
+    "scripts": [
+      "src/domain-utils.js",
+      "src/whois.js",
+      "src/icp.js",
+      "src/official-domain-pool.js",
+      "src/scoring.js",
+      "background.js"
+    ],
+    "persistent": true
+  },
+  "browser_action": {
+    "default_popup": "popup/popup.html",
+    "default_title": "SiteGuard - 域名安全标识",
+    "default_icon": {
+      "16": "icons/gray-16.png",
+      "32": "icons/gray-32.png",
+      "48": "icons/gray-48.png",
+      "128": "icons/gray-128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/gray-16.png",
+    "32": "icons/gray-32.png",
+    "48": "icons/gray-48.png",
+    "128": "icons/gray-128.png"
+  }
+}
